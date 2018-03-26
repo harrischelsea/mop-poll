@@ -185,15 +185,15 @@ router.post('/add-question', function (req,res,next) {
             addQuestion.opcije.map( el => {
                 queries.insertOptions(el.text, poll_id, question_id)
                     .then(e => {
-                        console.log(e);
+                        //TODO Optimize
                     }).catch(err => {
-                    console.log(err);
+                    res.status(400).send('err');
                 });
             });
         }).catch(err => {
-        console.log(err);
+        res.status(400).send('err');
     });
-    console.log(3);
+    res.send('ok');
 });
 
 router.post('/delete-question', function (req,res,next) {
@@ -212,7 +212,6 @@ router.post('/delete-question', function (req,res,next) {
         }).catch(err => {
         res.status(400).send('err');
     });
-
 });
 
 router.post('/delete-option', function (req,res,next) {
