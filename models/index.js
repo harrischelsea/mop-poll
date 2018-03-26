@@ -7,14 +7,14 @@ var dbConfig  = require('../config/db');
 var basename  = path.basename(__filename);
 var env       = process.env.NODE_ENV || 'development';
 var db        = {};
-
+/*
 var sequelize = new Sequelize(dbConfig.dbName, dbConfig.dbUser, dbConfig.dbPassword, {
         host: dbConfig.dbHost,
         dialect: 'postgres'
     }
 );
-
-//var sequelize = new Sequelize('postgres://avnadmin:wu7er4cp0ev2vff1@pg-2b075ad7-harix-ed79.aivencloud.com:19322/defaultdb');
+*/
+var sequelize = new Sequelize('postgres://jjwbtqcw:E2o6_WFFetNi78a2IkLzNucIf1td9as2@horton.elephantsql.com:5432/jjwbtqcw');
 
 fs
     .readdirSync(__dirname)
