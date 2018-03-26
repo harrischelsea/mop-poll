@@ -3,13 +3,15 @@ var router = express.Router();
 var models  = require('../models');
 var auth = require('../util/auth');
 
+
 var loginController = require('../controllers/loginController');
+var models = require('../models');
 var queries = require('../queries/queries');
 
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+    res.send('respond with a resource');
 });
 
 router.post('/', function(req,res,next){
@@ -178,22 +180,21 @@ router.post('/add-question', function (req,res,next) {
     const { addQuestion, poll_id } = req.body;
     console.log('TEST',addQuestion);
     console.log('pid',poll_id);
-    console.log(5555);
     queries.insertQuestion(addQuestion, poll_id)
         .then(question_id => {
-            console.log(question_id);
             addQuestion.opcije.map( el => {
                 queries.insertOptions(el.text, poll_id, question_id)
                     .then(e => {
-                        console.log(e);
+                        console.log('proba', e);
                     }).catch(err => {
-                    console.log(err);
+                    res.status(400).send('err');
                 });
             });
         }).catch(err => {
-        console.log(err);
+        res.status(400).send('err');
     });
-    console.log(3);
+
+    res.send('ok');
 });
 
 router.post('/delete-question', function (req,res,next) {

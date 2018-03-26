@@ -14,7 +14,7 @@ var sequelize = new Sequelize(dbConfig.dbName, dbConfig.dbUser, dbConfig.dbPassw
     }
 );
 */
-var sequelize = new Sequelize('postgres://jjwbtqcw:E2o6_WFFetNi78a2IkLzNucIf1td9as2@horton.elephantsql.com:5432/jjwbtqcw');
+var sequelize = new Sequelize('postgres://pacxjush:fOt5EiOtNfNyntAjC_iSvT-wsRF5aTAq@baasu.db.elephantsql.com:5432/pacxjush');
 
 fs
     .readdirSync(__dirname)

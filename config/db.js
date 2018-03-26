@@ -1,5 +1,5 @@
 module.exports={
-    dbName: 'mop',
+    dbName: 'proba',
     dbUser: 'postgres',
     dbPassword: '0000',
     dbHost: 'localhost'

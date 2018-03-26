@@ -62,7 +62,7 @@ async function insertPoll(pollName) {
 }
 
 async function insertQuestion(questions, poll_id) {
-    console.log(1);
+    console.log(111111111111111);
     let query1 = await sequelize.query(
         `       INSERT INTO "Questions" (text, "createdAt", "updatedAt", "poll_id", "type_id")
                 VALUES (?, current_date, current_date, ?, ?) RETURNING id;`
