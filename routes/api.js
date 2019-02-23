@@ -36,6 +36,7 @@ router.post('/login', loginController.post());
 router.post('/login-admin', loginController.postAdmin());
 
 router.get('/get-current-user', function (req, res, next) {
+    console.log('get current user', req);
     res.send({id: req.user.id, username: req.user.username, token: req.user.token });
 });
 
@@ -44,6 +45,7 @@ router.get('/get-current-admin', function (req, res, next) {
 });
 
 router.get('/get-all-polls', function (req,res,next) {
+    console.log("req.user.role", req.user.role);
     let user;
     if (req.user.role) {
         user = 0;
@@ -70,9 +72,11 @@ router.get('/get-all-polls', function (req,res,next) {
 });
 
 router.get('/get-all-questions/:pollId', function (req,res,next) {
+    console.log('get all questions poll id', req.params.pollId);
     let { pollId } = req.params;
     queries.getAllQuestions(pollId)
         .then(questions => {
+            console.log('ovdje saaaaaaaam');
             //res.send(questions);
             queries.getAllOptions(pollId)
                 .then(options => {
@@ -95,6 +99,7 @@ router.get('/get-all-questions/:pollId', function (req,res,next) {
                         }
                     }
 
+                    console.log('pitanja1111111111', pitanja);
                     res.send(pitanja);
                 });
         })
@@ -116,11 +121,14 @@ router.get('/get-all-options/:pollId', function (req,res,next) {
 router.post('/send-poll-results', function (req,res,next) {
     let  user_id  = req.user.id;
     const { options, poll_id } = req.body;
+    console.log('options req rq rq rq rqrqrqrqrqrq', req.bod);
 
     queries.answeredPoll(poll_id, user_id)
         .then(e => {
+            console.log('test test options 1111', options)
             options.map( el => {
-                queries.insertAnswers(el.text, el.id, user_id)
+                console.log('test test options el ele leele lel el elel ', el)
+                queries.insertAnswers("odgovor", el.option_id, user_id)
                     .then(e => {
                         //TODO Optimize
                     }).catch(err => {
@@ -131,12 +139,14 @@ router.post('/send-poll-results', function (req,res,next) {
         res.status(400).send('err');
     });
 
-    res.send('ok');
+    res.send(req.body);
 });
 
 router.post('/send-poll', function (req,res,next) {
     let admin_id  = req.user.id;
     const { pollName, questions } = req.body;
+    console.log('pollNamepollNamepollNamepollName', pollName)
+    console.log('questionsquestionsquestionsquestions', questions)
 
     queries.insertPoll(pollName)
         .then( poll => {
@@ -182,6 +192,7 @@ router.post('/add-question', function (req,res,next) {
     console.log('pid',poll_id);
     queries.insertQuestion(addQuestion, poll_id)
         .then(question_id => {
+            console.log('question_idquestion_id',question_id);
             addQuestion.opcije.map( el => {
                 queries.insertOptions(el.text, poll_id, question_id)
                     .then(e => {

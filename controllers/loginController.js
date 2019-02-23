@@ -2,6 +2,7 @@ const auth = require('../util/auth');
 const models = require('../models');
 
 const post = () => (req,res,next) => {
+    console.log('req.body', req.body);
     let { username, password} = req.body;
     if (!username || !password) {
         res.status(400);
@@ -51,6 +52,7 @@ const postAdmin = () => (req,res,next) => {
         attributes: [ 'id', 'username', 'role']
     }).then(admin => {
         if (!admin) throw new Error('bad login');
+        console.log('+++++postadmin', admin);
         return {
             token: auth.refreshToken(username),
             username: username,

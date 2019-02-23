@@ -1,0 +1,55 @@
+.background {
+    min-height: 100%;
+    width:100%;
+    left: 0;
+    position: fixed;
+    background: linear-gradient(top, #132747 0%, #01173a 50%, #132747 100%);
+}
+h4.ui.center.aligned.header {
+    color: white !important;
+    margin-top: 100px !important;
+}
+div.ui.fluid.left.icon.input input  {
+    padding: 20px !important;
+    color: white !important;
+    background-color: transparent !important;
+    outline: none;
+    border:0 !important;
+    border-bottom: 2px solid white !important;
+}
+
+div.field.input-custom input::placeholder {
+    color: white !important;
+    opacity: .8;
+    font-size: 16px;
+}
+div.field.input-custom {
+    box-shadow: none !important;
+    background: transparent !important;
+}
+div.ui.message {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+div.ui.message h3 {
+    width: auto;
+    float: left;
+    padding:5px;
+    color: white;
+    font-weight: normal;
+}
+div.ui.message a {
+    color: white !important;
+    float: right;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0;
+}
+div.ui.message a:hover {
+    background-color: white;
+    color: #0c9999 !important;
+}

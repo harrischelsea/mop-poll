@@ -41,12 +41,14 @@ async function getAllOptions(pollId) {
 }
 
 async function insertAnswers(answer, options_id, user_id) {
+    console.log('answerrrrrrrr', answer);
+    console.log('options_id', options_id);
     let res =  await sequelize.query(
         `INSERT INTO "UserAnswers" ("answer", "createdAt", "updatedAt", "options_id", "user_id")
              VALUES (?, current_date, current_date, ?, ?) 
         `,
         { replacements: [answer, options_id, user_id], type: sequelize.QueryTypes.SELECT});
-    console.log(res);
+    console.log('res', res);
     return res;
 }
 
@@ -113,7 +115,7 @@ async function updateQuestion(question) {
 }
 
 async function answeredPoll(poll_id, user_id) {
-    console.log(1);
+    console.log("poll_idpoll_idpoll_idpoll_idpoll_id", poll_id);
     let query1 = await sequelize.query(
         `       INSERT INTO "UserPolls" ("Done", "createdAt", "updatedAt", "poll_id", "user_id")
                 VALUES (?, current_date, current_date, ?, ?) RETURNING id;`

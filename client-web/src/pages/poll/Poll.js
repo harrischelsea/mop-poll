@@ -21,6 +21,7 @@ class Poll extends Component {
     };
 
     componentDidMount(){
+        console.log('poll+id');
         this.props.getUser();
         this.props.getAllQuestions(this.props.match.params.id);
     }

@@ -1,6 +1,6 @@
 module.exports={
     dbName: 'proba',
     dbUser: 'postgres',
-    dbPassword: '0000',
+    dbPassword: '1409',
     dbHost: 'localhost'
 };

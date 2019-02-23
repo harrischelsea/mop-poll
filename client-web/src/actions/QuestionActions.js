@@ -57,6 +57,7 @@ export const selectAnswer = (question_id, option_id, type_id, checked, textAnswe
 };
 
 export  const getAllQuestions = (pollId) => dispatch => {
+    console.log('getAllQuestionsgetAllQuestions');
     dispatch(getAllQuestionsStarted());
     axios.get('/users/get-all-questions/' + pollId)
         .then(res => {

@@ -117,8 +117,9 @@ router.post('/send-poll-results', function (req,res,next) {
 
     queries.answeredPoll(poll_id, user_id)
         .then(e => {
+            console.log('optiooooons', options);
             options.map( el => {
-                queries.insertAnswers(el.text, el.id, user_id)
+                queries.insertAnswers(el.text, el.option_id, user_id)
                     .then(e => {
                         //TODO Optimize
                     }).catch(err => {

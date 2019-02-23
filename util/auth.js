@@ -79,7 +79,7 @@ const validateAndRefreshToken = async token => {
                 role: admin.role
             };
         }
-        console.log(userObj);
+        console.log('userObj', userObj);
         return userObj;
     }
     catch (e){
@@ -91,6 +91,7 @@ const validateAndRefreshToken = async token => {
 const isProtectedRoute = (route, protectedRoutes) => !!protectedRoutes.find(r => r === route);
 
 const checkAuth = () => (req,res,next) => {
+    console.log('req-get authorization token', req.get('Authorization'))
     // if its a public path, just call next
     if (!isProtectedRoute(req.path, PROTECTED_ROUTES)) return next();
     // check for authorization header

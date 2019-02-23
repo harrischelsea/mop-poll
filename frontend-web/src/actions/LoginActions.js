@@ -60,7 +60,6 @@ export const getUser = () => dispatch => {
     dispatch(getUserStarted());
     axios.get('/users/get-current-user')
         .then(res => {
-            console.log('/users/get-current-user', res);
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')?localStorage.getItem('token'): '';
             dispatch(setUser({ username: res.data.username, id: res.data.id, token: res.data.token}));
             localStorage.setItem('token', res.data.token);
@@ -88,6 +87,7 @@ export const getUserAdmin = () => dispatch => {
 
 export  const loginUser = ({username, password}) => dispatch => {
     dispatch({ type: LOGIN_USER });
+    console.log('username', username + password)
     axios.post('/users/login', {username, password})
         .then(res => {
             dispatch(setUser({ username: res.data.username, id: res.data.id, token: res.data.token}));
@@ -95,7 +95,10 @@ export  const loginUser = ({username, password}) => dispatch => {
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')?localStorage.getItem('token'): '';
             loginUserSuccess(dispatch, res.data);
         })
-        .catch( () => loginUserFail(dispatch, 'Invalid login!'));
+        .catch( (err) => {
+            console.log('login err', err);
+            loginUserFail(dispatch, 'Invalid login!')
+        });
 };
 
 export  const loginUserAdmin = ({username, password}) => dispatch => {

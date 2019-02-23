@@ -81,6 +81,7 @@ class Create extends Component {
 
     sendPoll = () => {
         let { questions, pollName } = this.state;
+        console.log('questionsquestionsquestions', questions)
         this.props.getAllPolls();
         axios.post('/users/send-poll', { questions, pollName })
             .then(res => {
