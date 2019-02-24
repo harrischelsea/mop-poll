@@ -64,7 +64,8 @@ async function insertPoll(pollName) {
 }
 
 async function insertQuestion(questions, poll_id) {
-    console.log(111111111111111);
+    console.log('kveri', questions);
+    console.log('kveri', poll_id);
     let query1 = await sequelize.query(
         `       INSERT INTO "Questions" (text, "createdAt", "updatedAt", "poll_id", "type_id")
                 VALUES (?, current_date, current_date, ?, ?) RETURNING id;`
@@ -75,7 +76,7 @@ async function insertQuestion(questions, poll_id) {
 }
 
 async function insertOptions(options, poll_id, question_id) {
-    console.log(1);
+    console.log('insertoptions', options);
     let query1 = await sequelize.query(
         `       INSERT INTO "Options" (text, "createdAt", "updatedAt", "poll_id", "question_id")
                 VALUES (?, current_date, current_date, ?, ?) RETURNING id;`
@@ -104,12 +105,12 @@ async function deleteOption(option_id) {
     return res;
 }
 
-async function updateQuestion(question) {
+async function updateQuestion(questionText, questionId) {
     let res =  await sequelize.query(
         `UPDATE "Questions" SET text = ?
          WHERE id = ? 
         `,
-        { replacements: [question.text, question.id], type: sequelize.QueryTypes.SELECT});
+        { replacements: [questionText, questionId], type: sequelize.QueryTypes.SELECT});
     console.log(res);
     return res;
 }

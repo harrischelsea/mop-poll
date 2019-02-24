@@ -4,6 +4,7 @@ import LoginReducer from './LoginReducer';
 import PollReducer from './PollReducer';
 import QuestionReducer from './QuestionReducer';
 import AnswerReducer from './AnswerReducer';
+import CreatePollReducer from './CreatePollReducer'
 
 export default combineReducers({
     user: UserReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
     polls: PollReducer,
     question: QuestionReducer,
     answer: AnswerReducer,
+    createPoll: CreatePollReducer,
 });

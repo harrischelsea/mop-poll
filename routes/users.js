@@ -165,8 +165,8 @@ router.post('/send-poll', function (req,res,next) {
 });
 
 router.post('/update-question', function (req,res,next) {
-    const { currentQuestion } = req.body;
-    queries.updateQuestion(currentQuestion)
+    const { questionText, questionId } = req.body;
+    queries.updateQuestion(questionText, questionId)
         .then(e => {
             res.send('ok');
         }).catch(err => {
@@ -176,20 +176,18 @@ router.post('/update-question', function (req,res,next) {
 });
 
 router.post('/add-question', function (req,res,next) {
-    const { addQuestion, poll_id } = req.body;
-    console.log('TEST',addQuestion);
-    console.log('pid',poll_id);
-    console.log(5555);
-    queries.insertQuestion(addQuestion, poll_id)
+    const { currentQuestion, pollId } = req.body;
+    queries.insertQuestion(currentQuestion, pollId)
         .then(question_id => {
             console.log(question_id);
-            addQuestion.opcije.map( el => {
-                queries.insertOptions(el.text, poll_id, question_id)
+            currentQuestion.options.map( el => {
+                queries.insertOptions(el, pollId, question_id)
                     .then(e => {
                         //TODO Optimize
                     }).catch(err => {
                     res.status(400).send('err');
                 });
+                //res.send({question_id});
             });
         }).catch(err => {
         res.status(400).send('err');
@@ -198,10 +196,11 @@ router.post('/add-question', function (req,res,next) {
 });
 
 router.post('/delete-question', function (req,res,next) {
-    const { deleteCurrentQuestion } = req.body;
-    queries.deleteQuestion(deleteCurrentQuestion.id)
+    const { questionId, options } = req.body;
+    console.log('questionId', questionId)
+    queries.deleteQuestion(questionId)
         .then(e => {
-            deleteCurrentQuestion.opcije.map( o => {
+            options.map( o => {
                 queries.deleteOption(o.id)
                     .then(e => {
                         //TODO Optimize
@@ -216,8 +215,10 @@ router.post('/delete-question', function (req,res,next) {
 });
 
 router.post('/delete-option', function (req,res,next) {
-    const { currentOption } = req.body;
-    queries.deleteOption(currentOption.id)
+    const { optionId } = req.body;
+    console.log('optionId', optionId)
+    // queries.deleteOption(currentOption.id)
+    queries.deleteOption(optionId)
         .then(e => {
             //TODO Optimize
         }).catch(err => {
@@ -227,8 +228,8 @@ router.post('/delete-option', function (req,res,next) {
 });
 
 router.post('/add-option', function (req,res,next) {
-    const { currentOption, poll_id, currentQuestion } = req.body;
-    queries.insertOptions(currentOption.text, poll_id, currentQuestion.id)
+    const { optionText, pollId, questionId } = req.body;
+    queries.insertOptions(optionText, pollId, questionId)
         .then(id => {
             //TODO Optimize
             res.send(id);

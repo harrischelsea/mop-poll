@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {Container, Segment, Header } from 'semantic-ui-react';
 
 export class PollList extends Component {
-    componentDidMount(){
-        console.log(this.props.polls)
-    }
     render() {
         const { polls, link } = this.props;
         return (

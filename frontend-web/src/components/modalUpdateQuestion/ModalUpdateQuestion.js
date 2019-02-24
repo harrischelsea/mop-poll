@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
 import { Modal, Button, Header, Icon, Input } from 'semantic-ui-react';
 
-export class ModalCreateQuestion extends Component {
+export class ModalUpdateQuestion extends Component {
     constructor(props){
         super(props);
         this.state={
+            pollId: this.props.pollId,
             currentQuestion: {
-                name: '',
-                selectedType: 1,
-                options: [],
+                id: this.props.currentQuestion.id,
+                name: this.props.currentQuestion.name,
+                selectedType: this.props.currentQuestion.selectedType,
+                options: this.props.currentQuestion.options,
             },
             currentOption: {
                 text: ''
             },
         }
     }
-
-    handleSelectedType = e => {
-        const { currentQuestion } = this.state;
-        this.setState({
-            currentQuestion: {
-                ...currentQuestion,
-                selectedType: e.target.value,
-                options: e.target.value == 4 ? ['Unesite svoj odgovor'] : []
-            }
-        });
-    };
 
     handleQuestionName = e => {
         const { currentQuestion } = this.state;
@@ -38,29 +29,26 @@ export class ModalCreateQuestion extends Component {
     }
 
     addOption = () => {
-        const { currentOption, currentQuestion } = this.state;
+        const { currentOption, currentQuestion, pollId } = this.state;
         if (currentOption.text == "") return;
+        this.props.addOption(currentOption.text, pollId, currentQuestion.id)
         this.setState({
-            currentQuestion: {...currentQuestion, options: [...currentQuestion.options, currentOption.text]},
+            currentQuestion: {...currentQuestion, options: [...currentQuestion.options, currentOption]},
             currentOption: { text: '' } 
         })
     }
 
-    addQuestion = () => {
-        const { currentQuestion, questions } = this.state;
-        const { update, pollId } = this.props;
-        if (currentQuestion.selectedType != 4 && currentQuestion.options.length < 2) return;
+    removeOption = (index) => {
+        const { currentQuestion } = this.state;
+        if (currentQuestion.selectedType == 4) return;
+        this.props.deleteOption(currentQuestion.options[index].id);
+        currentQuestion.options.splice(index, 1);
+        this.setState({ currentQuestion: {...currentQuestion, options: currentQuestion.options} });
+    }
 
-        if (update && update == true) {
-            this.props.createQuestion(currentQuestion, pollId);
-            return;
-        }
-
-        this.props.createQuestion(currentQuestion);
-        this.setState({
-            currentQuestion: { name: '', selectedType: 1, options: [] },
-            currentOption: { text: '' }
-        });
+    updateQuestion = () => {
+        const { currentQuestion } = this.state;
+        this.props.updateQuestion(currentQuestion.name, currentQuestion.id);
     }
 
     render() {
@@ -69,11 +57,11 @@ export class ModalCreateQuestion extends Component {
                 <Modal trigger={
                     <Button fluid>
                         <Icon name='add square' />
-                        Create new question
+                        Update question
                     </Button>
                     }
                 closeIcon>
-                    <Header icon='archive' content='Create new question' />
+                    <Header icon='archive' content='Update question' />
                     <Modal.Content>
                         <Input
                             fluid
@@ -83,12 +71,6 @@ export class ModalCreateQuestion extends Component {
                             value={this.state.currentQuestion.name}
                             onChange={this.handleQuestionName}
                         />
-                        <select value={this.state.currentQuestion.selectedType} onChange={this.handleSelectedType}>
-                            <option value={1} >YES/NO</option>
-                            <option value={2}>SINGLE CHOICE</option>
-                            <option value={3}>MULTIPLE CHOICE</option>
-                            <option value={4}>TEXT</option>
-                        </select>
                         <br/>
 
                         {
@@ -108,13 +90,19 @@ export class ModalCreateQuestion extends Component {
                         }
                         <div style={{marginTop: '10px'}}>
                         {
-                            this.state.currentQuestion.options.map((e, i) =>
-                            <div key={i} className='options'>{e}</div>
+                            this.state.currentQuestion.options && this.state.currentQuestion.options.map((e, i) =>
+                            <div key={i} className='options'>
+                                {e.text ? e.text : e}
+                                <Button className='delete-button'
+                                    onClick={() => this.removeOption(i)}>
+                                    <Icon name='delete' />
+                                </Button>
+                            </div>
                         )}
                         </div>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button positive onClick={this.addQuestion}>ADD </Button>
+                        <Button positive onClick={this.updateQuestion}>Update</Button>
                     </Modal.Actions>
                 </Modal>
             </div>
