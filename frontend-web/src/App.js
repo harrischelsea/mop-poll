@@ -9,6 +9,7 @@ import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools} from 'redux-devtools-extension';
 import MainRouter from './router/MainRouter';
 import './App.css';
+import CmsRouter from './router/CmsRouter';
 
 const store = createStore(reducer, {}, composeWithDevTools(applyMiddleware(ReduxThunk)));
 
@@ -17,7 +18,10 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                  <MainRouter />
+                    <div>
+                        <MainRouter />
+                        <CmsRouter />
+                    </div>
                 </BrowserRouter>
             </Provider>
         );

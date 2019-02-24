@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { getUser } from '../../actions/LoginActions';
+import { getUserAdmin } from '../../actions/LoginActions';
 import { getAllPolls } from '../../actions/PollActions';
 import { PollList } from '../../components/pollList/PollList';
+// import './Home.css';
 
-class Home extends Component {
+class Main extends Component {
 
     componentDidMount(){
-        this.props.getUser();
+        console.log('test');
+        this.props.getUserAdmin();
         this.props.getAllPolls();
     }
 
@@ -19,12 +21,13 @@ class Home extends Component {
         return (
             <div>
                 <h1>home</h1>
+                <a href="/create">Create</a>
                 {
-                    this.props.polls.loading || this.props.user.loading
+                    this.props.polls.loading
                     ?
                     <h1>Loading---</h1>
                     :
-                    <PollList link={this.props.user.role == "admin" ? "/update/" : "/poll/"} polls={this.props.polls.polls} />
+                    <PollList link={"/update/"} polls={this.props.polls.polls} />
                 }
             </div>
         );
@@ -34,4 +37,4 @@ class Home extends Component {
 const mapStateToProps = ({ user, polls }) => {
     return { user, polls };
 };
-export default connect(mapStateToProps, {getUser, getAllPolls})(Home);
+export default connect(mapStateToProps, {getUserAdmin, getAllPolls})(Main);

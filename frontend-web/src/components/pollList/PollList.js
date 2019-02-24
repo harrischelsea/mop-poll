@@ -6,12 +6,12 @@ export class PollList extends Component {
         console.log(this.props.polls)
     }
     render() {
-        const { polls } = this.props;
+        const { polls, link } = this.props;
         return (
             <Container>
                 <Segment className='poll'>
                     {polls.map( p =>
-                        <a key={p.id} href={'/poll/' + p.id}>
+                        <a key={p.id} href={link + p.id}>
                             <Header as='h3' className='title'>{p.name}</Header>
                         </a>
                     )}

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/LoginActions';
 import { getAllQuestions } from '../../actions/QuestionActions';
-import { sendPollAnswers } from '../../actions/AnswerActions';
 import { QuestionList } from '../../components/questionList/QuestionList';
 import { Button } from 'semantic-ui-react';
+import './UpdatePoll.css';
 
-class Poll extends Component {
+class UpdatePoll extends Component {
 
     handleAnswers = () => {
         const { answers } = this.props.answer;  
@@ -22,7 +22,7 @@ class Poll extends Component {
     render() {
         return (
             <div>
-                test {this.props.match.params.id}
+                update {this.props.match.params.id}
                 {
                     this.props.question.loading
                     ?
@@ -30,15 +30,6 @@ class Poll extends Component {
                     :
                     <div>
                         <QuestionList questions={this.props.question.questions} />
-                        <Button
-                            positive
-                            color='white'
-                            fluid size='large'
-                            loading={this.props.answer.loading}
-                            onClick={this.handleAnswers}
-                            >
-                            SEND
-                        </Button>
                     </div>
                     
                 }
@@ -50,4 +41,4 @@ class Poll extends Component {
 const mapStateToProps = ({ question, user, answer }) => {
     return { question, user, answer };
 };
-export default connect(mapStateToProps, {getUser, getAllQuestions, sendPollAnswers})(Poll);
+export default connect(mapStateToProps, {getUser, getAllQuestions})(UpdatePoll);
