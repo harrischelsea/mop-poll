@@ -47,7 +47,7 @@ export const deletePoll = (pollId) => dispatch => {
     axios.post(Services.deletePoll, { pollId })
         .then(res => {
             dispatch(removePoll());
-            window.location.replace("/main");
+            window.location.replace("/admin/main");
         })
         .catch( () => console.log('Something went wrong!'));
 };

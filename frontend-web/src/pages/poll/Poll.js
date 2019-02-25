@@ -22,7 +22,6 @@ class Poll extends Component {
     render() {
         return (
             <div>
-                test {this.props.match.params.id}
                 {
                     this.props.question.loading
                     ?
@@ -32,7 +31,7 @@ class Poll extends Component {
                         <QuestionList questions={this.props.question.questions} />
                         <Button
                             positive
-                            color='white'
+                            color='green'
                             fluid size='large'
                             loading={this.props.answer.loading}
                             onClick={this.handleAnswers}

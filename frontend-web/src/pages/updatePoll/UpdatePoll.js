@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUser } from '../../actions/LoginActions';
+import { getUserAdmin } from '../../actions/LoginActions';
 import { getAllQuestions, addOption, deleteOption, updateQuestion, deleteQuestion, addQuestion } from '../../actions/QuestionActions';
 import { deletePoll } from '../../actions/PollActions';
-import { QuestionList } from '../../components/questionList/QuestionList';
 import { UpdateQuestionList } from '../../components/updateQuestionList/UpdateQuestionList';
 import { ModalCreateQuestion } from '../../components/modalCreateQuestion/ModalCreateQuestion';
 import './UpdatePoll.css';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon, Segment } from 'semantic-ui-react';
 
 class UpdatePoll extends Component {
 
@@ -22,25 +21,28 @@ class UpdatePoll extends Component {
     }
 
     componentDidMount(){
-        this.props.getUser();
+        this.props.getUserAdmin();
         this.props.getAllQuestions(this.props.match.params.id);
     }
 
     render() {
         return (
             <div>
-                update {this.props.match.params.id}
-                <Button
-                    onClick={this.deletePoll}
-                    className='add'>
-                    <Icon name='delete' />
-                    Delete poll
-                </Button>
-                <ModalCreateQuestion 
-                    pollId={this.props.match.params.id}
-                    update={true} 
-                    createQuestion={this.props.addQuestion} />
-                    
+                <Segment className='update'>
+                    <div className='title'>Anketa</div>
+                    <Button
+                        onClick={this.deletePoll}
+                        className='add'>
+                        <Icon name='delete' />
+                        Delete poll
+                    </Button>
+                    <div style={{float: 'right'}}>
+                        <ModalCreateQuestion 
+                            pollId={this.props.match.params.id}
+                            update={true} 
+                            createQuestion={this.props.addQuestion} />
+                    </div>
+                </Segment>
                 {
                     this.props.question.loading
                     ?
@@ -64,6 +66,6 @@ const mapStateToProps = ({ question, user, polls }) => {
 };
 export default connect(
     mapStateToProps,
-    {getUser, getAllQuestions, addOption, deleteOption,
+    {getUserAdmin, getAllQuestions, addOption, deleteOption,
     updateQuestion, deleteQuestion, deletePoll, addQuestion}
     )(UpdatePoll);

@@ -7,9 +7,8 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducers';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools} from 'redux-devtools-extension';
-import MainRouter from './router/MainRouter';
 import './App.css';
-import CmsRouter from './router/CmsRouter';
+import Router from './router/Router';
 
 const store = createStore(reducer, {}, composeWithDevTools(applyMiddleware(ReduxThunk)));
 
@@ -18,10 +17,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                    <div>
-                        <MainRouter />
-                        <CmsRouter />
-                    </div>
+                    <Router />
                 </BrowserRouter>
             </Provider>
         );

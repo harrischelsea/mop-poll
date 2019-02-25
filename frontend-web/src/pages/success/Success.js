@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Container, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 class Success extends Component {
 
@@ -9,7 +10,7 @@ class Success extends Component {
                 <Container>
                     <Segment>
                     Uspješno ste uradili Anketu! <br/>
-                    <a href='/'>Vratite se na početnu stranicu.</a>
+                    <Link to="/user">Vratite se na početnu stranicu.</Link>
                     </Segment>
                 </Container>
             </div>

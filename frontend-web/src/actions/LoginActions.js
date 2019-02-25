@@ -94,6 +94,7 @@ export  const loginUser = ({username, password}) => dispatch => {
             localStorage.setItem('token', res.data.token);
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')?localStorage.getItem('token'): '';
             loginUserSuccess(dispatch, res.data);
+            window.location.replace("/user/");
         })
         .catch( (err) => {
             console.log('login err', err);
@@ -111,6 +112,7 @@ export  const loginUserAdmin = ({username, password}) => dispatch => {
             console.log('res.data.token', res.data.token);
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')?localStorage.getItem('token'): '';
             loginUserSuccess(dispatch, res.data);
+            window.location.replace("/admin/main");
         })
         .catch( () => loginUserFail(dispatch, 'Invalid login!'));
 };

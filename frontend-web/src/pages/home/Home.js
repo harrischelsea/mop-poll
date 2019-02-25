@@ -18,13 +18,12 @@ class Home extends Component {
         }
         return (
             <div>
-                <h1>home</h1>
                 {
                     this.props.polls.loading || this.props.user.loading
                     ?
                     <h1>Loading---</h1>
                     :
-                    <PollList link={this.props.user.role == "admin" ? "/update/" : "/poll/"} polls={this.props.polls.polls} />
+                    <PollList link={"/user/poll/"} polls={this.props.polls.polls} />
                 }
             </div>
         );

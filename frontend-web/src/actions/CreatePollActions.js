@@ -54,7 +54,7 @@ export const sendPoll = (questions, pollName) => dispatch => {
     axios.post(Services.sendPoll,  { questions, pollName })
         .then(res => {
             dispatch(sendPollsSuccess());
-            window.location.replace("/main");
+            window.location.replace("/admin/main");
         })
         .catch( () => dispatch(sendPollsFailed('Something went wrong!')));
 };

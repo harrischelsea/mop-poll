@@ -20,9 +20,7 @@ class CreatePoll extends Component {
 
     sendPoll = () => {
         const { pollName } = this.state;
-        if (pollName == "") return;
-        console.log('oooooook');
-        console.log('this.props.createPoll.createdQuestions', this.props.createPoll.createdQuestions);
+        if (pollName === "") return;
         this.props.sendPoll(this.props.createPoll.createdQuestions, pollName);
     }
 
@@ -33,7 +31,6 @@ class CreatePoll extends Component {
     render() {
         return (
             <div>
-                <h1>create</h1>
                 <Input fluid
                     style={{marginBottom: '10px'}}
                     type='text'

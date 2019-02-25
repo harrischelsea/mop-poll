@@ -9,7 +9,7 @@ class QuestionTypeCheckbox extends Component {
         return (
             <Form>
                 <Form.Group grouped>
-                    { options.map( el => <QuestionTypeItem type={type} item={el} /> )}
+                    { options.map( el => <QuestionTypeItem key={el.id} type={type} item={el} /> )}
                 </Form.Group>
             </Form>
         );

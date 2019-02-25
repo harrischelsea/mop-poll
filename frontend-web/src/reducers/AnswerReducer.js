@@ -31,20 +31,20 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 function handleAnswers(answers, newAnswer) {
-    let find = answers.find(el => el.option_id == newAnswer.option_id);
+    let find = answers.find(el => el.option_id === newAnswer.option_id);
     if (!find) {
         let checkType = answers.find(el => 
             el.type_id && el.question_id &&
-            el.question_id == newAnswer.question_id &&
-            el.type_id == newAnswer.type_id);
-        if (checkType && (checkType.type_id == 1 || checkType.type_id == 2)){
-            let index = answers.findIndex(el => el.option_id == checkType.option_id);
+            el.question_id === newAnswer.question_id &&
+            el.type_id === newAnswer.type_id);
+        if (checkType && (checkType.type_id === 1 || checkType.type_id === 2)){
+            let index = answers.findIndex(el => el.option_id === checkType.option_id);
             answers.splice(index, 1, newAnswer);
         } else {
             answers.push(newAnswer)
         }
     } else {
-        let index = answers.findIndex(el => el.option_id == newAnswer.option_id);
+        let index = answers.findIndex(el => el.option_id === newAnswer.option_id);
         answers.splice(index, 1);
     }
 

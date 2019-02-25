@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Grid, Form, Header, Button, Message, Container} from 'semantic-ui-react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { usernameChanged, passwordChanged, loginUser } from '../../actions/LoginActions';
 import './Login.css';
@@ -17,15 +17,12 @@ class Login extends Component {
 
     handleUsernameChanged = e => {
         this.props.usernameChanged(e.target.value);
-        // this.setState({username: e.target.value})
     };
     handlePasswordChanged = e => {
         this.props.passwordChanged(e.target.value);
-        // this.setState({password: e.target.value})
     };
     handleLogin = () => {
         const { username, password } = this.props.login;
-        // const { username, password } = this.state;
         this.props.loginUser({ username, password });
     };
 
@@ -34,9 +31,6 @@ class Login extends Component {
     }
 
     render() {
-        if ( this.props.login.successLogin) {
-            return <Redirect to='/' />;
-        }
         return (
             <div className='background'>
                 <Container>

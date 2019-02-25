@@ -10,7 +10,7 @@ class QuestionTypeText extends Component {
             <Form>
                 <Form.Group grouped>
                     { options.map( el =>
-                        <h3>
+                        <h3 key={el.id}>
                             <Form.Field
                                         control='textarea'
                                         onChange={(e) => {this.props.selectAnswer(el.text, el.pitanje, el.id, 4, true, e.target.value )}}

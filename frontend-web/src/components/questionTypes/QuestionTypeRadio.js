@@ -14,7 +14,7 @@ class QuestionTypeRadio extends Component {
     handleSelected = (index) => {
         const { options } = this.state;
         let newOptions = options.map((el, i) => {
-            if (i == index) {
+            if (i === index) {
                 console.log(el)
                 return ({...el, selected: !el.selected})
             } else {
@@ -34,6 +34,7 @@ class QuestionTypeRadio extends Component {
                 <Form.Group grouped>
                     { this.state.options.map( (el, i) => 
                         <Form.Field 
+                            key={el.id}
                             label={el.text}
                             control='input'
                             type={type}

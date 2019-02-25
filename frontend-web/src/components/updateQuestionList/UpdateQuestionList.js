@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment, Header, Button } from 'semantic-ui-react';
+import { Container, Segment, Button } from 'semantic-ui-react';
 import { ModalUpdateQuestion } from '../../components/modalUpdateQuestion/ModalUpdateQuestion'
 
 export class UpdateQuestionList extends Component {

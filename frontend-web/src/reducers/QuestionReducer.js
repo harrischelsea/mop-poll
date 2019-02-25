@@ -39,12 +39,12 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 function changeQuestion(questions, updatedQuestion) {
-    let findIndex = questions.findIndex(el => el.id == updatedQuestion.questionId);
+    let findIndex = questions.findIndex(el => el.id === updatedQuestion.questionId);
     questions[findIndex] = {...questions[findIndex], text: updatedQuestion.questionText}
     return questions;
 }
 
 function removeQuestion(questions, deleteQuestion) {
-    let newQuestions = questions.filter(el => el.id != deleteQuestion.questionId);
+    let newQuestions = questions.filter(el => el.id !== deleteQuestion.questionId);
     return newQuestions;
 }

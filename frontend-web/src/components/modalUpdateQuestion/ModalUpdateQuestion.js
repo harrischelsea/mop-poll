@@ -24,13 +24,12 @@ export class ModalUpdateQuestion extends Component {
     }
 
     handleOptionInput = e => {
-        const { currentOption } = this.state;
         this.setState( {currentOption: {text: e.target.value} })
     }
 
     addOption = () => {
         const { currentOption, currentQuestion, pollId } = this.state;
-        if (currentOption.text == "") return;
+        if (currentOption.text === "") return;
         this.props.addOption(currentOption.text, pollId, currentQuestion.id)
         this.setState({
             currentQuestion: {...currentQuestion, options: [...currentQuestion.options, currentOption]},
@@ -40,7 +39,7 @@ export class ModalUpdateQuestion extends Component {
 
     removeOption = (index) => {
         const { currentQuestion } = this.state;
-        if (currentQuestion.selectedType == 4) return;
+        if (currentQuestion.selectedType === 4) return;
         this.props.deleteOption(currentQuestion.options[index].id);
         currentQuestion.options.splice(index, 1);
         this.setState({ currentQuestion: {...currentQuestion, options: currentQuestion.options} });
@@ -74,7 +73,7 @@ export class ModalUpdateQuestion extends Component {
                         <br/>
 
                         {
-                            this.state.currentQuestion.selectedType != 4
+                            this.state.currentQuestion.selectedType !== 4
                             ? 
                             <div>
                                 <Input

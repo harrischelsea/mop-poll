@@ -24,6 +24,6 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 function checkQuestions(createdQuestions, deleteIndex) {
-    let newQuestions = createdQuestions.filter((el, i) => deleteIndex != i);
+    let newQuestions = createdQuestions.filter((el, i) => deleteIndex !== i);
     return newQuestions;
 }

@@ -20,14 +20,12 @@ class Main extends Component {
         }
         return (
             <div>
-                <h1>home</h1>
-                <a href="/create">Create</a>
                 {
                     this.props.polls.loading
                     ?
                     <h1>Loading---</h1>
                     :
-                    <PollList link={"/update/"} polls={this.props.polls.polls} />
+                    <PollList link={"/admin/update/"} polls={this.props.polls.polls} />
                 }
             </div>
         );

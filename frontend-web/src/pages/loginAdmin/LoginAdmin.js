@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Grid, Form, Header, Button, Message, Container} from 'semantic-ui-react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { usernameChanged, passwordChanged, loginUserAdmin } from '../../actions/LoginActions';
 import '../login/Login.css';
@@ -19,9 +18,6 @@ class LoginAdmin extends Component {
     };
 
     render() {
-        if ( this.props.successLogin && this.props.role) {
-            return <Redirect to='/main' />;
-        }
         return (
             <div className='background'>
                 <Container>
