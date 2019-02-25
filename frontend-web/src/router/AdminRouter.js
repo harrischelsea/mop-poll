@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import CmsRouter from './CmsRouter';
 import Menu from '../components/menu/Menu';
-
 import UpdatePoll from '../pages/updatePoll/UpdatePoll';
 import Main from '../pages/main/Main';
 import CreatePoll from '../pages/createPoll/CreatePoll';

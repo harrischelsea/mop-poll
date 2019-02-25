@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import LoginRouter from './LoginRouter';
+import MainRouter from './MainRouter';
 
 class Router extends Component {
     render() {
         return (
-            <div>
-            <LoginRouter />
-            </div>
+            <MainRouter />
         );
     }
 }
