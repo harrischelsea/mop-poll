@@ -8,7 +8,7 @@ class MainRouter extends Component {
     render() {
         return (
             <Switch>
-                <Route path="/" component={Home} />
+                <Route exact path="/" component={Home} />
                 <Route path="/poll/:id" component={Poll} />
                 <Route path="/success" component={Success} />
             </Switch>
