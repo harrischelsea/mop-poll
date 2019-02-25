@@ -12,7 +12,7 @@ class MainRouter extends Component {
             <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
-                <Route exact path="/" component={UserRouter} />
+                <Route path="/" component={UserRouter} />
                 <Route path="/cms" component={LoginAdmin} />
                 <Route path="/admin/" component={AdminRouter} />
             </Switch>

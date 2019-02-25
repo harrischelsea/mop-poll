@@ -9,8 +9,8 @@ class MainRouter extends Component {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/poll/:id" component={Poll} />
-                <Route exact path="/success" component={Success} />
+                <Route path="/poll/:id" component={Poll} />
+                <Route path="/success" component={Success} />
             </Switch>
         );
     }
