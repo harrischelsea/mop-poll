@@ -16,10 +16,13 @@ class LoginRouter extends Component {
             <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
+
                 {/* <Route exact path="/" component={UserRouter} /> */}
-                <Route exact path="/" component={Home} />
+                {/* <Route exact path="/" component={Home} />
                 <Route path="/poll/:id" component={Poll} />
-                <Route path="/success" component={Success} />
+                <Route path="/success" component={Success} /> */}
+                <UserRouter />
+
                 <Route path="/cms" component={LoginAdmin} />
                 <Route path="/admin/" component={AdminRouter} />
             </Switch>
