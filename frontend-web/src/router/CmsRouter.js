@@ -8,7 +8,7 @@ class CmsRouter extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/admin/main" component={Main} />
+                <Route path="/admin/main" component={Main} />
                 <Route path="/admin/update/:id" component={UpdatePoll} />
                 <Route path="/admin/create/" component={CreatePoll} />
             </Switch>

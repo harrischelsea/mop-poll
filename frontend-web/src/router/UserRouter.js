@@ -12,10 +12,7 @@ class UserRouter extends Component {
         return (
             <div>
                 <Menu role={"user"} />
-                {/* <MainRouter /> */}
-                <Route path="/" component={Home} />
-                <Route path="/poll/:id" component={Poll} />
-                <Route path="/success" component={Success} />
+                <MainRouter />
             </div>
         );
     }
