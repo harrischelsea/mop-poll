@@ -10,20 +10,18 @@ import Home from '../pages/home/Home';
 import Poll from '../pages/poll/Poll';
 import Success from '../pages/success/Success';
 
-import Menu from '../components/menu/Menu';
-
 class LoginRouter extends Component {
     render() {
         return (
             <Switch>
                 <Route path="/login" component={Login} />
+                <Route path="/cms" component={LoginAdmin} />
                 <Route path="/register" component={Register} />
-                {/* <Route exact path="/" component={UserRouter} /> */}
+
                 <Route exact path="/" component={Home} />
                 <Route path="/poll/:id" component={Poll} />
                 <Route path="/success" component={Success} />
 
-                <Route path="/cms" component={LoginAdmin} />
                 <Route path="/admin/" component={AdminRouter} />
             </Switch>
         );

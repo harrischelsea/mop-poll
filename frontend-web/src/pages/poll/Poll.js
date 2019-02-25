@@ -5,6 +5,7 @@ import { getAllQuestions } from '../../actions/QuestionActions';
 import { sendPollAnswers } from '../../actions/AnswerActions';
 import { QuestionList } from '../../components/questionList/QuestionList';
 import { Button } from 'semantic-ui-react';
+import Menu from '../../components/menu/Menu';
 
 class Poll extends Component {
 
@@ -22,6 +23,7 @@ class Poll extends Component {
     render() {
         return (
             <div>
+                <Menu role="user" />
                 {
                     this.props.question.loading
                     ?

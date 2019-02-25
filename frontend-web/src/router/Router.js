@@ -4,7 +4,9 @@ import LoginRouter from './LoginRouter';
 class Router extends Component {
     render() {
         return (
+            <div>
             <LoginRouter />
+            </div>
         );
     }
 }

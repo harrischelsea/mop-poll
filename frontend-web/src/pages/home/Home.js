@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { getUser } from '../../actions/LoginActions';
 import { getAllPolls } from '../../actions/PollActions';
 import { PollList } from '../../components/pollList/PollList';
+import Menu from '../../components/menu/Menu';
 
 class Home extends Component {
 
@@ -18,6 +19,7 @@ class Home extends Component {
         }
         return (
             <div>
+                <Menu role="user" />
                 {
                     this.props.polls.loading || this.props.user.loading
                     ?
