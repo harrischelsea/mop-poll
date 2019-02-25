@@ -67,7 +67,7 @@ export const addOption = (optionText, pollId, questionId) => dispatch => {
         .then(res => {
             dispatch(addQuestionOption());
         })
-        .catch( () => console.log('Something went wrong!'));
+        .catch( () => console.log('TODO - ERROR HANDLING!'));
 };
 
 export const deleteOption = (optionId) => dispatch => {
@@ -76,7 +76,7 @@ export const deleteOption = (optionId) => dispatch => {
         .then(res => {
             dispatch(deleteQuestionOption());
         })
-        .catch( () => console.log('Something went wrong!'));
+        .catch( () => console.log('TODO - ERROR HANDLING!'));
 };
 
 export const updateQuestion = (questionText, questionId) => dispatch => {
@@ -84,7 +84,7 @@ export const updateQuestion = (questionText, questionId) => dispatch => {
         .then(res => {
             dispatch(updateQuestionName({questionText, questionId}));
         })
-        .catch( () => console.log('Something went wrong!'));
+        .catch( () => console.log('TODO - ERROR HANDLING!'));
 };
 
 export const deleteQuestion = (questionId, options) => dispatch => {
@@ -93,7 +93,7 @@ export const deleteQuestion = (questionId, options) => dispatch => {
         .then(res => {
             dispatch(removeQuestion({questionId}));
         })
-        .catch( () => console.log('Something went wrong!'));
+        .catch( () => console.log('TODO - ERROR HANDLING!'));
 };
 
 const addNewQuestion = (payload) => {
@@ -110,5 +110,5 @@ export const addQuestion = (currentQuestion, pollId) => dispatch => {
         .then(res => {
             dispatch(addNewQuestion(currentQuestion));
         })
-        .catch( () => console.log('Something went wrong!'));
+        .catch( () => console.log('TODO - ERROR HANDLING!'));
 };

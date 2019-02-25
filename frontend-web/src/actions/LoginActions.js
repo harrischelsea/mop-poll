@@ -97,7 +97,6 @@ export  const loginUser = ({username, password}) => dispatch => {
             window.location.replace("/user/");
         })
         .catch( (err) => {
-            console.log('login err', err);
             loginUserFail(dispatch, 'Invalid login!')
         });
 };

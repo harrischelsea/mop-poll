@@ -8,13 +8,13 @@ var basename  = path.basename(__filename);
 var env       = process.env.NODE_ENV || 'development';
 var db        = {};
 
-var sequelize = new Sequelize(dbConfig.dbName, dbConfig.dbUser, dbConfig.dbPassword, {
-        host: dbConfig.dbHost,
-        dialect: 'postgres'
-    }
-);
+// var sequelize = new Sequelize(dbConfig.dbName, dbConfig.dbUser, dbConfig.dbPassword, {
+//         host: dbConfig.dbHost,
+//         dialect: 'postgres'
+//     }
+// );
 
-// var sequelize = new Sequelize('postgres://pacxjush:fOt5EiOtNfNyntAjC_iSvT-wsRF5aTAq@baasu.db.elephantsql.com:5432/pacxjush');
+var sequelize = new Sequelize('postgres://pacxjush:fOt5EiOtNfNyntAjC_iSvT-wsRF5aTAq@baasu.db.elephantsql.com:5432/pacxjush');
 
 fs
     .readdirSync(__dirname)

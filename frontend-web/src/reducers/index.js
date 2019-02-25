@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import UserReducer from './UserReducer';
 import LoginReducer from './LoginReducer';
+import RegisterReducer from './RegisterReducer';
 import PollReducer from './PollReducer';
 import QuestionReducer from './QuestionReducer';
 import AnswerReducer from './AnswerReducer';
@@ -13,4 +14,5 @@ export default combineReducers({
     question: QuestionReducer,
     answer: AnswerReducer,
     createPoll: CreatePollReducer,
+    register: RegisterReducer,
 });

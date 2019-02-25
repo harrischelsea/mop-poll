@@ -9,7 +9,6 @@ import { PollList } from '../../components/pollList/PollList';
 class Main extends Component {
 
     componentDidMount(){
-        console.log('test');
         this.props.getUserAdmin();
         this.props.getAllPolls();
     }
