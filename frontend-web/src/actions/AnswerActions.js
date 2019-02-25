@@ -44,7 +44,7 @@ export const sendPollAnswers = (options, poll_id) => dispatch => {
     axios.post(Services.sendPollAnswers, { options, poll_id })
         .then(res => {
             dispatch(sendPollAnswersSuccess());
-            window.location.replace("/user/success");
+            window.location.replace("/success");
         })
         .catch( () => dispatch(sendPollAnswersFailed('Something went wrong!')));
 };

@@ -23,7 +23,7 @@ class Home extends Component {
                     ?
                     <h1>Loading---</h1>
                     :
-                    <PollList link={"/user/poll/"} polls={this.props.polls.polls} />
+                    <PollList link={"poll/"} polls={this.props.polls.polls} />
                 }
             </div>
         );

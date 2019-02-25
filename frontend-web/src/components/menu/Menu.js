@@ -3,7 +3,7 @@ import { Container, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const userRouter = [
-    { name: "View all", link: "/user" },
+    { name: "View all", link: "/" },
     { name: "Log out", link: "/login" }
 ];
 

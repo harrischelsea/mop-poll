@@ -94,7 +94,7 @@ export  const loginUser = ({username, password}) => dispatch => {
             localStorage.setItem('token', res.data.token);
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')?localStorage.getItem('token'): '';
             loginUserSuccess(dispatch, res.data);
-            window.location.replace("/user/");
+            window.location.replace("/");
         })
         .catch( (err) => {
             loginUserFail(dispatch, 'Invalid login!')

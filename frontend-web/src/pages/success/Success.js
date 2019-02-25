@@ -10,7 +10,7 @@ class Success extends Component {
                 <Container>
                     <Segment>
                     Uspješno ste uradili Anketu! <br/>
-                    <Link to="/user">Vratite se na početnu stranicu.</Link>
+                    <Link to="/">Vratite se na početnu stranicu.</Link>
                     </Segment>
                 </Container>
             </div>
