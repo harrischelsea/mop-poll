@@ -6,18 +6,18 @@ import Register from '../pages/register/Register';
 import UserRouter from './UserRouter';
 import AdminRouter from './AdminRouter';
 
-class MainRouter extends Component {
+class LoginRouter extends Component {
     render() {
         return (
             <Switch>
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
-                <Route path="/" component={UserRouter} />
-                <Route exact path="/cms" component={LoginAdmin} />
+                <Route exact path="/" component={UserRouter} />
+                <Route path="/cms" component={LoginAdmin} />
                 <Route path="/admin/" component={AdminRouter} />
             </Switch>
         );
     }
 }
 
-export default MainRouter;
+export default LoginRouter;
