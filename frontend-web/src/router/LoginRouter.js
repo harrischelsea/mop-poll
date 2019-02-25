@@ -19,12 +19,10 @@ class LoginRouter extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 {/* <Route exact path="/" component={UserRouter} /> */}
-                <div>
-                <Menu />
+                
                 <Route exact path="/" component={Home} />
                 <Route path="/poll/:id" component={Poll} />
                 <Route path="/success" component={Success} />
-                </div>
 
                 <Route path="/cms" component={LoginAdmin} />
                 <Route path="/admin/" component={AdminRouter} />
